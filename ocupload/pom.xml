@@ -1,0 +1,181 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.xiaogui.ocupload</groupId>
+  <artifactId>ocupload</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name>ocupload</name>
+  <description>Excel文件一键上传解析完成数据批量导入数据库</description>
+  
+	<properties>
+		<struts2.version>2.3.24</struts2.version>
+		<poi.version>3.12</poi.version>
+		<spring.version>4.3.8.RELEASE</spring.version>
+		<hibernate.version>5.0.11.Final</hibernate.version>
+		<springdatajpa.version>1.10.4.RELEASE</springdatajpa.version>
+		<c3p0.version>0.9.1.2</c3p0.version>
+		<mysql.version>5.1.41</mysql.version>
+		<servlet.version>3.1.0</servlet.version>
+		<log4j.version>1.7.12</log4j.version>
+		<pinyin4j.version>2.5.0</pinyin4j.version>
+		<tomcat.version>2.1</tomcat.version>
+		<compiler.version>3.5.1</compiler.version>
+		<commons.version>3.4</commons.version>
+	</properties>
+ 
+ 
+  
+  <!-- Struts2核心包 -->
+  <dependencies>
+  	<dependency>
+  		<groupId>org.apache.struts</groupId>
+  		<artifactId>struts2-core</artifactId>
+  		<version>${struts2.version}</version>
+  	</dependency>
+	<!-- Struts2转换json数据包 -->
+  	<dependency>
+  		<groupId>org.apache.struts</groupId>
+  		<artifactId>struts2-json-plugin</artifactId>
+  		<version>${struts2.version}</version>
+  	</dependency>
+  	<!-- Struts2注解开发包 -->
+  	<dependency>
+  		<groupId>org.apache.struts</groupId>
+  		<artifactId>struts2-convention-plugin</artifactId>
+  		<version>${struts2.version}</version>
+  	</dependency>
+  	
+  	<!-- 解析HSSF的包  就是解析Excel 97-2007格式的Excel文档(以.xls结尾的)-->
+  	<dependency>
+  		<groupId>org.apache.poi</groupId>
+  		<artifactId>poi</artifactId>
+  		<version>${poi.version}</version>
+  	</dependency>
+  	<!-- 解析XSSF的包  解析Excel 2007格式的Excel文档(以.xlsx结尾的) 这个包依赖poi包-->
+  	<dependency>
+  		<groupId>org.apache.poi</groupId>
+  		<artifactId>poi-ooxml</artifactId>
+  		<version>${poi.version}</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.poi</groupId>
+  		<artifactId>poi-ooxml-schemas</artifactId>
+  		<version>${poi.version}</version>
+  	</dependency>
+  	
+  	
+  	<!-- spring核心包 -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+
+	<!--进行web集成开发  -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-web</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+
+    <!-- spring整合struts2 -->
+  	<dependency>
+  		<groupId>org.apache.struts</groupId>
+  		<artifactId>struts2-spring-plugin</artifactId>
+  		<version>${struts2.version}</version>
+  	</dependency>
+  	<!-- spring整合持久层框架的 -->
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-orm</artifactId>
+  		<version>${spring.version}</version>
+  	</dependency>
+  	<!-- hibernate核心 -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-core</artifactId>
+  		<version>${hibernate.version}</version>
+  	</dependency>
+  	<!-- 使用jpa进行持久层开发 -->
+  	<dependency>
+  		<groupId>org.hibernate</groupId>
+  		<artifactId>hibernate-entitymanager</artifactId>
+  		<version>${hibernate.version}</version>
+  	</dependency>
+  	<!-- spring-data 整合jpa  简化持久层开发的包 -->
+  	<dependency>
+  		<groupId>org.springframework.data</groupId>
+  		<artifactId>spring-data-jpa</artifactId>
+  		<version>${springdatajpa.version}</version>
+  	</dependency>
+
+	<!-- 数据库连接池 -->
+  	<dependency>
+  		<groupId>c3p0</groupId>
+  		<artifactId>c3p0</artifactId>
+  		<version>${c3p0.version}</version>
+  	</dependency>
+  	<!-- 数据库驱动 -->
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>${mysql.version}</version>
+  	</dependency>
+  	<!-- Servlet、JSP -->
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>${servlet.version}</version>
+  		<!-- 只在编译和运行时期有效 -->
+  		<scope>provided</scope>
+  	</dependency>
+  	<!-- 日志框架 -->
+  	<dependency>
+  		<groupId>org.slf4j</groupId>
+  		<artifactId>slf4j-log4j12</artifactId>
+  		<version>${log4j.version}</version>
+  	</dependency>
+  	
+  	<!-- 支持字符串转换拼音 -->
+  	<dependency>
+  		<groupId>pinyin4j</groupId>
+  		<artifactId>pinyin4j</artifactId>
+  		<version>${pinyin4j.version}</version>
+  	</dependency>
+  	<!-- 工具包 -->
+  	<dependency>
+  		<groupId>org.apache.commons</groupId>
+  		<artifactId>commons-lang3</artifactId>
+  		<version>${commons.version}</version>
+  	</dependency>
+  </dependencies>
+  <build>
+  	<plugins>
+  		<!-- 导入tomcat7插件 -->
+  		<plugin>
+  			<groupId>org.apache.tomcat.maven</groupId>
+  			<artifactId>tomcat7-maven-plugin</artifactId>
+  			<version>${tomcat.version}</version>
+  			<configuration>
+  				<!-- 访问端口 -->
+  				<port>8888</port>
+  				<!-- 访问项目的路径，这样配置不用在访问的时候，再输入项目名 -->
+  				<path>/</path>
+  			</configuration>
+  		</plugin>
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-compiler-plugin</artifactId>
+  			<version>${compiler.version}</version>
+  			<configuration>
+  				<!-- 设置资源文件的编码方式 -->
+  				<encoding>UTF-8</encoding>
+  				<!-- 源代码使用的jdk开发版本 -->
+  				<source>1.7</source>
+  				<!--生成目标class文件的编译版本  -->
+  				<target>1.7</target>
+  			</configuration>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>

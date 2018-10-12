@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Excel文件一键上传</title>
+
+<!--导入js文件-->
+<script type="text/javascript" src="/js/jquery-1.8.0.min.js"></script>
+<!--导入JQuery一键上传插件ocupload-->
+<script type="text/javascript" src="/js/jquery.ocupload-1.1.2.js"></script>
+
+
+<script type="text/javascript">
+
+$(function(){
+	
+	//为按钮绑定一键上传插件
+	$("#ocupload").upload({ 
+        action: '../ocupload_batchImport.action', 
+        enctype: 'multipart/form-data', 
+        
+        onComplete: function(response) {
+        	//将返回的json字符串response转换成json对象
+        	var data = JSON.parse(response);
+        	if(data.result){
+        		alert("文件上传成功！");
+        	}else{
+        		alert("文件上传失败！");
+        	}
+        },
+        onSelect: function() {
+        	
+        	this.autoSubmit = false;    //这个是一键上传插件中的属性
+        	//定义一个正则表达式，用来限定只能上传以.xls或以.xlsx结尾的Excel文件
+        	var regex = /^.*\.(xls|xlsx)$/ ;
+        	
+        	//获得上传文件的名字
+        	var filename = this.filename();    //这个方法是由一键上传的插件提供
+        	if(regex.test(filename)){
+        		//符合条件,提交form表单
+        		this.submit();            //这个方法是由一键上传的插件提供
+        	}else{
+        		//不符合条件,给出提示
+        		alert("只能上传以.xls或以.xlsx结尾的文件！");
+        	}
+        }
+}); 
+})
+</script>
+
+
+</head>
+<body>
+	<input type="button" value="一键上传" id="ocupload"/>
+</body>
+</html>
