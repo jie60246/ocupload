@@ -17,7 +17,7 @@
 		<mysql.version>5.1.41</mysql.version>
 		<servlet.version>3.1.0</servlet.version>
 		<log4j.version>1.7.12</log4j.version>
-		<pinyin4j.version>2.5.0</pinyin4j.version>
+<!--		<pinyin4j.version>2.5.0</pinyin4j.version>-->
 		<tomcat.version>2.1</tomcat.version>
 		<compiler.version>3.5.1</compiler.version>
 		<commons.version>3.4</commons.version>
@@ -137,12 +137,14 @@
   	</dependency>
   	
   	<!-- 支持字符串转换拼音 -->
-  	<dependency>
-  		<groupId>pinyin4j</groupId>
-  		<artifactId>pinyin4j</artifactId>
-  		<version>${pinyin4j.version}</version>
-  	</dependency>
-  	<!-- 工具包 -->
+	  <!-- https://mvnrepository.com/artifact/com.github.open-android/pinyin4j -->
+	  <dependency>
+		  <groupId>pinyin4j</groupId>
+		  <artifactId>pinyin4j</artifactId>
+		  <version>2.5.0</version>
+	  </dependency>
+
+	  <!-- 工具包 -->
   	<dependency>
   		<groupId>org.apache.commons</groupId>
   		<artifactId>commons-lang3</artifactId>
